@@ -187,7 +187,8 @@ export async function getLocalesForDeployedTheme(
     const dirs = await getDirEntriesAtPath(themeRoot);
 
     // filter out any extra files/folders that aren't locales
-    const reLang = /^[a-z]{2}(?:_[a-z]{2})?$/i;
+    // const reLang = /^[a-z]{2}(?:_[a-z]{2})?$/i;
+    const reLang = /^[a-z]{2}(?:_[a-z]{2,4})(?:_[a-z]{2})?$/i;
     const locales = dirs.filter(d => reLang.test(d));
     trace(
         `found deployed locales for ${theme.themeID}: ${JSON.stringify(
